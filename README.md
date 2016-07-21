@@ -3,6 +3,10 @@ The getCalculator() method is updated as well. It now takes into account the vis
 
 It can be used to switch visibility on a marker and refresh the numbers of the clustericons afterwards. Only the visible markers will be counted.
 
+
+    Bower: bower install js-marker-clusterer-recalc
+
+
 Marker Clusterer – A Google Maps JavaScript API utility library
 
 A Google Maps JavaScript API v3 library to create and manage per-zoom-level clusters for large amounts of markers.
