@@ -1,7 +1,9 @@
-**Please note:** This repository is not currently maintained, and is kept for historical purpose only.
+This version of Marker Clusterer includes a recalculateClusters() public function. 
+The getCalculator() method is updated as well. It now takes into account the visibility of a marker.
+
+It can be used to switch visibility on a marker and refresh the numbers of the clustericons afterwards. Only the visible markers will be counted.
 
 Marker Clusterer – A Google Maps JavaScript API utility library
-==============
 
 A Google Maps JavaScript API v3 library to create and manage per-zoom-level clusters for large amounts of markers.
 ![Analytics](https://maps-ga-beacon.appspot.com/UA-12846745-20/js-marker-clusterer/readme?pixel)
