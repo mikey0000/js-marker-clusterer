@@ -954,7 +954,10 @@ Cluster.prototype.updateIcon = function () {
   var sums = this.markerClusterer_.getCalculator()(this.markers_, numStyles);
   this.clusterIcon_.setCenter(this.center_);
   this.clusterIcon_.setSums(sums);
-  this.clusterIcon_.show();
+  if(parseFloat(sums.text) > 0)
+      this.clusterIcon_.show();
+  else
+      this.clusterIcon_.hide();
 };
 
 /**
