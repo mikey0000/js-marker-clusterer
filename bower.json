@@ -1,11 +1,11 @@
 {
-  "name": "js-marker-clusterer",
+  "name": "js-marker-clusterer-recalc",
   "version": "1.0.0",
   "homepage": "https://github.com/googlemaps/js-marker-clusterer",
   "authors": [
     "Luke Mahe"
   ],
-  "description": "The library creates and manages per-zoom-level clusters for large amounts of markers. Google API v3.",
+  "description": "The library creates and manages per-zoom-level clusters for large amounts of markers. Google API v3. It also includes recalculateClusters functionality.",
   "main": "src/markerclusterer.js",
   "keywords": [
     "google",
