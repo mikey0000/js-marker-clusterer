@@ -522,13 +522,6 @@ MarkerClusterer.prototype.getTotalClusters = function () {
   return this.clusters_.length;
 };
 
-MarkerClusterer.prototype.recalculateClusters = function () {
-  
-  return this.clusters_.forEach(function (cluster) {      
-      cluster.updateIcon();
-  });
-};
-
 /**
  * Returns the google map that the clusterer is associated with.
  *
@@ -805,7 +798,7 @@ Cluster.prototype.isMarkerAlreadyAdded = function (marker) {
  * @return {boolean} True if the marker was added.
  */
 Cluster.prototype.addMarker = function (marker) {
-  if (this.isMarkerAlreadyAdded(marker)) {
+    if (this.isMarkerAlreadyAdded(marker)) {
     return false;
   }
 
@@ -823,26 +816,28 @@ Cluster.prototype.addMarker = function (marker) {
   }
 
   marker.isAdded = true;
-  this.markers_.push(marker);
+  if (marker.getVisible()) {
+      this.markers_.push(marker);
 
-  var len = this.markers_.length;
-  if (len < this.minClusterSize_ && marker.getMap() != this.map_) {
-    // Min cluster size not reached so show the marker.
-    marker.setMap(this.map_);
+      var len = this.markers_.length;
+      if (len < this.minClusterSize_ && marker.getMap() != this.map_) {
+          // Min cluster size not reached so show the marker.
+          marker.setMap(this.map_);
+      }
+
+      if (len == this.minClusterSize_) {
+          // Hide the markers that were showing.
+          for (var i = 0; i < len; i++) {
+              this.markers_[i].setMap(null);
+          }
+      }
+
+      if (len >= this.minClusterSize_) {
+          marker.setMap(null);
+      }
+
+      this.updateIcon();
   }
-
-  if (len == this.minClusterSize_) {
-    // Hide the markers that were showing.
-    for (var i = 0; i < len; i++) {
-      this.markers_[i].setMap(null);
-    }
-  }
-
-  if (len >= this.minClusterSize_) {
-    marker.setMap(null);
-  }
-
-  this.updateIcon();
   return true;
 };
 
@@ -959,7 +954,7 @@ Cluster.prototype.updateIcon = function () {
   var sums = this.markerClusterer_.getCalculator()(this.markers_, numStyles);
   this.clusterIcon_.setCenter(this.center_);
   this.clusterIcon_.setSums(sums);
-  if(parseFloat(sums.text) > 0)
+  if (parseFloat(sums.text) >= this.minClusterSize_)
       this.clusterIcon_.show();
   else
       this.clusterIcon_.hide();

@@ -1,10 +1,8 @@
-This version of Marker Clusterer includes a recalculateClusters() public function. 
-The getCalculator() method is updated as well. It now takes into account the visibility of a marker.
-
-It can be used to switch visibility on a marker and refresh the numbers of the clustericons afterwards. Only the visible markers will be counted.
+This version of Marker Clusterer takes into account the visibility of a marker.
+Only the visible markers will be counted.
 
 
-    Bower: bower install js-marker-clusterer-recalc
+    Bower: bower install js-marker-clusterer-mling
 
 
 Marker Clusterer – A Google Maps JavaScript API utility library
